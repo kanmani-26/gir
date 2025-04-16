@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Giraffee!</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #fff7e6, #ffe0b2);
+      color: #333;
+      padding-bottom: 50px;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #f9c74f;
+      padding: 15px 0;
+      text-align: center;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar a {
+      color: #5e3900;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #d35400;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    /* Section Headings */
+    .section h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #bf360c;
+    }
+
+    /* Surprise Box */
+    .surprise-box {
+      animation: pulse 1.5s infinite;
+      background: #ffcc00;
+      color: #5c3900;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      font-weight: bold;
+      text-align: center;
+      padding: 20px;
+      margin: 40px auto;
+      width: fit-content;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .surprise-box:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0px rgba(255, 204, 0, 0.5); }
+      50% { box-shadow: 0 0 20px rgba(255, 204, 0, 0.9); }
+    }
+
+    /* Paragraph Style */
+    .section p, .section ul {
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: #3e2723;
+      padding: 0 10px;
+    }
+
+    /* Fun Facts List */
+    #fun-facts ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #fun-facts li::before {
+      content: "🦒 ";
+      margin-right: 8px;
+    }
+
+    /* Slideshow Styles */
+    .slideshow-container {
+      position: relative;
+      max-width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .caption {
+      background-color: #fff3e0;
+      padding: 10px;
+      font-style: italic;
+      color: #6d4c41;
+      text-align: center;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 12px;
+      color: #4e342e;
+      font-weight: bold;
+      font-size: 18px;
+      background-color: rgba(255, 193, 7, 0.7);
+      transition: 0.3s;
+      user-select: none;
+      border-radius: 50%;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: #ffb300;
+    }
+
+    .prev {
+      left: 10px;
+      transform: translateY(-50%);
+    }
+
+    .next {
+      right: 10px;
+      transform: translateY(-50%);
+    }
+
+    /* Message Textarea and Button */
+    textarea {
+      border: 2px solid #ffd54f;
+      border-radius: 10px;
+      background-color: #fffde7;
+      resize: none;
+      padding: 10px;
+      width: 100%;
+    }
+
+    button {
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #e91e63;
+      transform: scale(1.05);
+    }
+
+    /* Reveal Handling */
+    .hidden {
+      display: none;
+    }
+
+    .visible {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .navbar a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .container {
+        padding: 20px 10px;
+      }
+
+      .slide img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#greeting">Wish</a> |
+ 
+    <a href="#message">Message</a> |
+    <a href="#memory-slideshow">Gallery</a> |
+    <a href="#fun-facts">Fun Facts</a>
+  </div>
+
+  <div class="container">
+    <div id="greeting" class="section">
+      <h1 style=" text-align: center;">Hiiiii Giraffeeee ❤️</h1>
+      <div class="surprise-box" onclick="revealSurprise()"> 🎁 Click for Surprise! 🎁</div>
+    </div>
+
+    <div id="surprise-content" class="hidden">
+      <div id="poem" class="section">
+        <h2>My Wish</h2>
+        <p>
+          Wish you a very happy birthday, Giraffee!<br>
+          May you always stay happy and continue to rise higher and higher in life.<br>
+          Even if we don’t talk like we used to,<br>
+          please know—there was never a moment I stopped thinking about you.<br>
+          I genuinely hope… you’ll never forget me.<br><br>
+          These simple words may not be enough to express everything,<br>
+          but they carry every piece of my heart for you today. 💛<br>
+          Stay blessed. Stay bright. Forever my Giraffee. 🦒❤️
+        </p>
+      </div>
+
+      <div id="message" class="section">
+        <h2>A Special Message</h2>
+        <p>
+          I honestly don't know why I like you so much.<br>
+          Ever since 2018, there's been something special about you that I can't put into words.<br>
+          Maybe it's your smile, your kindness, or just the way you are.<br>
+          I'm not sure if I'll have the right to wish you next year, so I wanted to make this one special — just in case.<br>
+          I know I don't deserve you, but that hasn't stopped me from caring deeply about you.<br><br>
+
+          I don't expect anything in return; I just wanted to create this as a small token of my feelings.<br>
+          I hope this brings a smile to your face, even if just for a moment. Because for me, that's enough.<br><br>
+
+          Even though what you said hurts, I know it’s true. There’s nothing wrong with you, and I completely understand why you said it.<br>
+          If I can’t become the person who deserves you, then I won’t deserve you. I truly hope that one day, I’ll be able to meet someone who deserves me.<br><br>
+
+          But even with all of this, please know that my feelings for you won't change. I admire you for who you are, and no matter what happens, that respect will always stay with me.<br>
+          You’ve made an impact on my life in ways I can’t fully express, and I’ll always cherish the moments we’ve shared.<br>
+          You deserve someone who brings out the best in you, and I genuinely hope you find that person. ❤️
+        </p>
+      </div>
+
+      <div id="memory-slideshow" class="section">
+        <h2>Our Memory Slideshow</h2>
+        <div class="slideshow-container">
+          <div class="slide fade">
+            <img src="gir1.avif" alt="Memory 1" />
+            <p class="caption">The way you smiled... unforgettable.</p>
+          </div>
+          <div class="slide fade">
+            <img src="ghi.jpeg" alt="Memory 2" />
+            <p class="caption">Childhood memories that never fade.</p>
+          </div> 
+          <div class="slide fade">
+            <img src="mic.jpeg" alt="Memory 2" />
+            <p class="caption">YOU REMEMBER THISS</p>
+          </div>  
+          <div class="slide fade">
+            <img src="mick.jpeg" alt="Memory 2" />
+        
+          </div>
+          <div class="slide fade">
+            <img src="wat.png" alt="Memory 3" />
+            <p class="caption">2018... when everything changed. ❤️</p>
+          </div>
+          <div class="slide fade">
+            <img src="uss.jpeg" alt="Memory 3" />s
+            <p class="caption">summa edit pani pathennn....  </p>
+          </div>
+          <a class="prev" onclick="plusSlides(-1)">❮</a>
+          <a class="next" onclick="plusSlides(1)">❯</a>
+        </div>
+      </div>
+      <div class="video-wrapper" style="text-align: center; margin-top: 30px;">
+        <video width="280px" height="250px" controls style="max-width: 600px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+          <source src="vd.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p style="margin-top: 10px; font-style: italic; color: #6d4c41;">ithu nenga pesama irukurapa nana pesikirathuu notess laa 😄❤️ </p>
+      </div>
+      
+      <div id="fun-facts" class="section">
+        <h2>  About Us</h2>
+        <ul>
+          <li>We've known each other since childhood.</li>
+          <li>🌱 Our special bond started to grow beautifully in 2018 and has only gotten stronger since then.</li>
+          <li>🔐 You’re the one person I trust completely, with all my heart.</li>
+          <li>💬 If you feel like saying something after reading this, even if it’s just to tease me, go ahead and message me on WhatsApp 😄<br>
+              ✨ I just hope this brings a little bit of happiness to your day 💛
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function revealSurprise() {
+      const surpriseContent = document.getElementById("surprise-content");
+      surpriseContent.classList.remove("hidden");
+      surpriseContent.classList.add("visible");
+      surpriseContent.scrollIntoView({ behavior: "smooth" });
+    }
+
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      let slides = document.getElementsByClassName("slide");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex - 1].style.display = "block";
+    }
+
+    // Scroll-in animation (optional)
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
